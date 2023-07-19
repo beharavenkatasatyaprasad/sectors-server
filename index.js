@@ -31,6 +31,15 @@ const sectorSchema = new mongoose.Schema({
 
 const SectorModel = mongoose.model('Sector', sectorSchema);
 
+app.get('/', async (req, res) => {
+  try {
+    return res.status(200).json({ message: 'Welcome, no cookies for you!' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Failed to retrieve sectors.' });
+  }
+});
+
 // API route to get all sectors
 app.get('/api/sectors', async (req, res) => {
   try {
